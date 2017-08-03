@@ -1,3 +1,34 @@
+-- Database: "tracker-db"
+
+-- DROP DATABASE "tracker-db";
+
+CREATE DATABASE "tracker-db"
+WITH OWNER = postgres
+             ENCODING = 'UTF8'
+             TABLESPACE = pg_default
+             LC_COLLATE = 'Polish_Poland.1250'
+           LC_CTYPE = 'Polish_Poland.1250'
+           CONNECTION LIMIT = -1;
+
+CREATE ROLE "tracker-admin" LOGIN
+  ENCRYPTED PASSWORD 'md52f8258dcc70099ab673a43f7308077c1'
+  NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION;
+
+
+GRANT USAGE ON SCHEMA "BM" TO "tracker-admin";
+
+grant all on all tables in schema "BM" to "tracker-admin";
+
+grant all on all sequences in schema "BM" to "tracker-admin";
+
+ALTER DEFAULT PRIVILEGES
+GRANT INSERT, SELECT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER ON TABLES
+TO postgres;
+
+ALTER DEFAULT PRIVILEGES
+GRANT INSERT, SELECT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER ON TABLES
+TO "tracker-admin";
+
 create table "BM"."USER"
 (
   id integer not null constraint user_pkey primary key,
@@ -12,7 +43,7 @@ create table "BM"."USER"
   group_id integer
 );
 
-create SEQUENCE "BM"."USER_SEQ" START WITH 1 INCREMENT BY 1 NOCACHE;
+create SEQUENCE "BM"."USER_SEQ" START WITH 1 INCREMENT BY 1;
 
 create table "BM"."EVENT"
 (

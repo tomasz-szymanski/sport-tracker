@@ -5,13 +5,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
+@Table(schema = "BM", name = "USER")
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "UserSeqGenerator")
-	@SequenceGenerator(name = "UserSeqGenerator", sequenceName = "BK.USER_SEQ")
+	@SequenceGenerator(name = "UserSeqGenerator", sequenceName = "BM.USER_SEQ")
 	private Long id;
 
 	private String firstName;
