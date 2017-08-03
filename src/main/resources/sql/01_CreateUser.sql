@@ -12,6 +12,8 @@ create table "BM"."USER"
   group_id integer
 );
 
+create SEQUENCE "BM"."USER_SEQ" START WITH 1 INCREMENT BY 1 NOCACHE;
+
 create table "BM"."EVENT"
 (
   id integer not null constraint event_pkey primary key,
@@ -20,7 +22,7 @@ create table "BM"."EVENT"
   start_date time
 );
 
-create table "BM"."GROUP"
+create table "BM"."AGE_GROUP"
 (
   id integer not null constraint group_pkey primary key,
   name varchar(500),
