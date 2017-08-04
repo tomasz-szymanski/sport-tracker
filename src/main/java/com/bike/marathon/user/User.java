@@ -8,12 +8,12 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(schema = "BM", name = "USER")
+@Table(schema = "public", name = "user")
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "UserSeqGenerator")
-	@SequenceGenerator(name = "UserSeqGenerator", sequenceName = "BM.USER_SEQ")
+	@SequenceGenerator(name = "UserSeqGenerator", sequenceName = "user_seq", schema = "public")
 	private Long id;
 
 	private String firstName;
@@ -22,29 +22,21 @@ public class User {
 
 	private Long startNumber;
 
+	private Long startSector;
+
 	private String city;
 
 	private String country;
 
 	private String team;
 
+	private String gender;
+
 	private String ageGroup;
 
-	public User() {
-	}
+	private boolean elite;
 
-	@Override
-	public String toString() {
-		return "User{" +
-			"id=" + id +
-			", firstName='" + firstName + '\'' +
-			", lastName='" + lastName + '\'' +
-			", startNumber=" + startNumber +
-			", city='" + city + '\'' +
-			", country='" + country + '\'' +
-			", team='" + team + '\'' +
-			", ageGroup='" + ageGroup + '\'' +
-			'}';
+	public User() {
 	}
 
 	public Long getId() {
@@ -109,5 +101,29 @@ public class User {
 
 	public void setAgeGroup(String ageGroup) {
 		this.ageGroup = ageGroup;
+	}
+
+	public Long getStartSector() {
+		return startSector;
+	}
+
+	public void setStartSector(Long startSector) {
+		this.startSector = startSector;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public boolean isElite() {
+		return elite;
+	}
+
+	public void setElite(boolean elite) {
+		this.elite = elite;
 	}
 }

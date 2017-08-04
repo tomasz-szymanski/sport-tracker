@@ -11,15 +11,10 @@ import org.apache.commons.csv.CSVRecord;
 
 public class CSVReader {
 
-    public List<CSVRecord> getRecords(String filePath) throws IOException {
+    public List<CSVRecord> getRecords(String filePath, Character columnSeparator) throws IOException {
         File toRead = new File(filePath);
-        CSVParser parser = CSVParser.parse(toRead, Charset.defaultCharset(), CSVFormat.newFormat(';'));
+        CSVParser parser = CSVParser.parse(toRead, Charset.defaultCharset(), CSVFormat.newFormat(columnSeparator));
         return parser.getRecords();
     }
 
-    public List<String> getValues(CSVRecord record){
-        final int size = record.size();
-        final String s = record.get(size);
-        return null;
-    }
 }

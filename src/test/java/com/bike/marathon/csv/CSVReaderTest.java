@@ -11,10 +11,10 @@ import org.junit.Test;
 public class CSVReaderTest {
 
     @Test
-    public void readFile() throws IOException {
+    public void testGetRecords() throws IOException {
         String filePath = "src/test/resources/ALL_USERS_UTF-8.csv";
         CSVReader reader = new CSVReader();
-        final List<CSVRecord> records = reader.getRecords(filePath);
+        final List<CSVRecord> records = reader.getRecords(filePath, ';');
         Assert.assertNotNull(records);
         Assert.assertTrue(records.size() > 0);
     }
