@@ -32,13 +32,16 @@ CREATE TABLE "user"
 );
 
 create sequence "user_seq" start with 1 increment by 1;
+create sequence "event_seq" start with 1 increment by 1;
+create sequence "results_seq" start with 1 increment by 1;
 
 create table "event"
 (
   id integer not null constraint event_pkey primary key,
   name varchar(500),
   place varchar(100),
-  start_date time
+  start_date date,
+  start_time time
 );
 
 create table "age_group"
