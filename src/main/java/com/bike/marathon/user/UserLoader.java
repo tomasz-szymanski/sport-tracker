@@ -19,6 +19,7 @@ public class UserLoader {
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserLoader.class);
 	private static final String USERS_FILE_PATH = "src/main/resources/data/ALL_USERS_UTF-8.csv";
 	private static final char COLUMN_SEPARATOR = ';';
+	private static final String NON_BREAKABLE_SPACE = "\\u00A0";
 	@Autowired
 	private UserRepository userRepository;
 
@@ -53,7 +54,7 @@ public class UserLoader {
 	}
 
 	private String replaceWhiteSpaces(String input){
-		return Optional.of(input).orElse("").replaceAll(" ", "").replaceAll("\\u00A0", "");
+		return Optional.of(input).orElse("").replaceAll(" ", "").replaceAll(NON_BREAKABLE_SPACE, "");
 	}
 
 	public void insertSampleUserToDBAndRead(UserRepository userRepository) {

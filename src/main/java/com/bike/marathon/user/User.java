@@ -36,6 +36,8 @@ public class User {
 
 	private boolean elite;
 
+	private Long birthYear;
+
 	public User() {
 	}
 
@@ -125,5 +127,13 @@ public class User {
 
 	public void setElite(boolean elite) {
 		this.elite = elite;
+	}
+
+	public Long getBirthYear() {
+		return birthYear;
+	}
+
+	public void setBirthYear(Long birthYear) {
+		this.birthYear = birthYear;
 	}
 }

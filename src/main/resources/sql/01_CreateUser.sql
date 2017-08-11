@@ -24,11 +24,11 @@ CREATE TABLE "user"
   team         VARCHAR(500),
   country      VARCHAR(10),
   city         VARCHAR(100),
-  age          INTEGER,
   gender       VARCHAR(1),
-  elite        INTEGER,
+  elite        BOOLEAN,
   group_id     INTEGER,
-  age_group    VARCHAR(20)
+  age_group    VARCHAR(20),
+  birth_year   INTEGER
 );
 
 create sequence "user_seq" start with 1 increment by 1;
