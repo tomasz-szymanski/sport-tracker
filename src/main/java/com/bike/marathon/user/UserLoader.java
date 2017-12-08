@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bike.marathon.csv.CSVReader;
+import com.google.common.base.Preconditions;
 
 @Service
 public class UserLoader {
@@ -76,8 +77,9 @@ public class UserLoader {
 			LOGGER.info(user.toString());
 		}
 		LOGGER.info("-------- Find by start number -------- ");
-		final User byStartNumber = userRepository.findByStartNumber(3620L);
-		LOGGER.info(byStartNumber.toString());
+		final List<User> byStartNumber = userRepository.findByStartNumber(3620L);
+		Preconditions.checkArgument(byStartNumber.get(0) != null);
+		LOGGER.info(byStartNumber.get(0).toString());
 
 	}
 

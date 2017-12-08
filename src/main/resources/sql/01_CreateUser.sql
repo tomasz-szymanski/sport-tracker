@@ -31,6 +31,10 @@ CREATE TABLE "user"
   birth_year   INTEGER
 );
 
+DROP SEQUENCE "user_seq";
+DROP SEQUENCE "event_seq";
+DROP SEQUENCE "results_seq";
+
 create sequence "user_seq" start with 1 increment by 1;
 create sequence "event_seq" start with 1 increment by 1;
 create sequence "results_seq" start with 1 increment by 1;
@@ -39,7 +43,7 @@ create table "event"
 (
   id integer not null constraint event_pkey primary key,
   name varchar(500),
-  place varchar(100),
+  city varchar(100),
   start_date date,
   start_time time
 );
@@ -49,6 +53,16 @@ create table "age_group"
   id integer not null constraint group_pkey primary key,
   name varchar(500),
   description varchar(100)
+);
+
+drop table "result";
+
+create table "result"
+(
+  id integer not null constraint result_pkey primary key,
+  user_id INTEGER REFERENCES user(id),
+  event_id INTEGER REFERENCES event(id),
+  start_time time
 );
 
 grant all on all tables in schema "public" to "tracker-admin";

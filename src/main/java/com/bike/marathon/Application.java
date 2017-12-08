@@ -11,8 +11,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import com.bike.marathon.user.UserLoader;
 
 @SpringBootApplication
-@EntityScan(basePackages = {"com.bike.marathon.user"})
-@EnableJpaRepositories(basePackages = {"com.bike.marathon.user"})
+@EntityScan(
+	basePackages = {"com.bike.marathon.user", "com.bike.marathon.result", "com.bike.marathon.event"})
+@EnableJpaRepositories(
+	basePackages = {"com.bike.marathon.user", "com.bike.marathon.result", "com.bike.marathon.event"})
 public class Application {
 
 	private final UserLoader userLoader;
@@ -28,7 +30,8 @@ public class Application {
 
 	@Bean
 	public CommandLineRunner demo() {
-		return (args) -> userLoader.loadUsersToDB();
+//		return (args) -> userLoader.loadUsersToDB();
+		return null;
 	}
 
 
